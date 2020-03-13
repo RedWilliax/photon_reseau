@@ -6,6 +6,7 @@ using Photon.Realtime;
 
 public class NM_NetworkManager : MonoBehaviourPunCallbacks
 {
+    [SerializeField] string nameServ = "1";
     //
     public override void OnConnectedToMaster()
     {

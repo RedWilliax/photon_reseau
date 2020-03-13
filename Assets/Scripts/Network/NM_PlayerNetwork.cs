@@ -46,5 +46,7 @@ public class NM_PlayerNetwork : MonoBehaviour, IPunObservable
         }
     }
 
+    void SendElement<T>(PhotonStream stream, T _element) => stream.SendNext(_element);
 
+    void ReceiveElement<T>(PhotonStream stream, ref T _element) => _element = (T)stream.ReceiveNext();
 }
