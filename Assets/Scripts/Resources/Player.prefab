@@ -114,7 +114,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 114381955762725834}
-  viewIdField: 0
+  viewIdField: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &114381955762725834
@@ -140,4 +140,5 @@ MonoBehaviour:
     speedOfScale: 20
     localScale: {x: 0, y: 0, z: 0}
   color:
-    color: {r: 0, g: 0, b: 0, a: 0}
+    material: {fileID: 0}
+    color: {r: 0.4056604, g: 0, b: 0, a: 1}

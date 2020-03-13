@@ -16,6 +16,9 @@ public class NM_PlayerNetwork : MonoBehaviour, IPunObservable
 
     [SerializeField] NM_ColorNetwork color = null;
 
+
+    string nickName = "DefaultName";
+
     bool IsValid => movement != null && rotation != null && scale != null;
 
     void Start()
@@ -24,7 +27,7 @@ public class NM_PlayerNetwork : MonoBehaviour, IPunObservable
         rotation = new NM_RotationMovment(gameObject);
         scale = new NM_ScaleNetwork(gameObject);
         color = new NM_ColorNetwork(gameObject);
-        name = myID.ViewID.ToString();
+        nickName = myID.name;
 
     }
 
