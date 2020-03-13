@@ -12,7 +12,7 @@ public class NM_RotationMovment
 
     GameObject owner = null;
 
-    public Vector3 localRotation = Vector3.zero;
+    public Quaternion localRotation = Quaternion.identity;
 
     public NM_RotationMovment(GameObject owner)
     {
@@ -21,12 +21,12 @@ public class NM_RotationMovment
 
     public void OnLocalRotation()
     {
-        localRotation = owner.transform.eulerAngles;
+        localRotation = owner.transform.rotation;
     }
 
     public void OnLineRotation()
     {
-        owner.transform.eulerAngles = Vector3.MoveTowards(owner.transform.eulerAngles, localRotation, Time.deltaTime * speedOfRotation);
+        owner.transform.rotation = Quaternion.RotateTowards(owner.transform.rotation, localRotation, Time.deltaTime * speedOfRotation);
     }
 
 }

@@ -114,7 +114,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 114381955762725834}
-  viewIdField: 1
+  viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &114381955762725834
@@ -136,3 +136,6 @@ MonoBehaviour:
   movement:
     speedOfMovement: 20
     localMovement: {x: 0, y: 0, z: 0}
+  scale:
+    speedOfScale: 0
+    localScale: {x: 0, y: 0, z: 0}

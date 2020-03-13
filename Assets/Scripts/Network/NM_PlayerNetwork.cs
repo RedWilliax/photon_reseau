@@ -55,6 +55,7 @@ public class NM_PlayerNetwork : MonoBehaviour, IPunObservable
             SendElement(stream, rotation.localRotation.x);
             SendElement(stream, rotation.localRotation.y);
             SendElement(stream, rotation.localRotation.z);
+            SendElement(stream, rotation.localRotation.w);
 
             SendElement(stream, scale.localScale.x);
             SendElement(stream, scale.localScale.y);
@@ -71,6 +72,7 @@ public class NM_PlayerNetwork : MonoBehaviour, IPunObservable
             ReceiveElement(stream, ref rotation.localRotation.x);
             ReceiveElement(stream, ref rotation.localRotation.y);
             ReceiveElement(stream, ref rotation.localRotation.z);
+            ReceiveElement(stream, ref rotation.localRotation.w);
 
             ReceiveElement(stream, ref scale.localScale.x);
             ReceiveElement(stream, ref scale.localScale.y);
