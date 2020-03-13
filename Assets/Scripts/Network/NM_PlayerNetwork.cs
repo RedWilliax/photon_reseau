@@ -12,12 +12,15 @@ public class NM_PlayerNetwork : MonoBehaviour, IPunObservable
 
     [SerializeField] NM_MovementNetwork movement = null;
 
-    bool IsValid => movement != null && rotation != null;
+    [SerializeField] NM_ScaleNetwork scale = null;
+
+    bool IsValid => movement != null && rotation != null && scale != null;
 
     void Start()
     {
         movement = new NM_MovementNetwork(gameObject);
         rotation = new NM_RotationMovment(gameObject);
+        scale = new NM_ScaleNetwork(gameObject);
         name = myID.ViewID.ToString();
 
     }
@@ -30,11 +33,13 @@ public class NM_PlayerNetwork : MonoBehaviour, IPunObservable
         {
             movement.OnLocalMovement();
             rotation.OnLocalRotation();
+            scale.OnLocalScale();
         }
         else
         {
             movement.OnOnlineMovement();
             rotation.OnLineRotation();
+            scale.OnLineScale();
         }
     }
 
@@ -50,6 +55,11 @@ public class NM_PlayerNetwork : MonoBehaviour, IPunObservable
             SendElement(stream, rotation.localRotation.x);
             SendElement(stream, rotation.localRotation.y);
             SendElement(stream, rotation.localRotation.z);
+
+            SendElement(stream, scale.localScale.x);
+            SendElement(stream, scale.localScale.y);
+            SendElement(stream, scale.localScale.z);
+
         }
 
         else
@@ -61,6 +71,10 @@ public class NM_PlayerNetwork : MonoBehaviour, IPunObservable
             ReceiveElement(stream, ref rotation.localRotation.x);
             ReceiveElement(stream, ref rotation.localRotation.y);
             ReceiveElement(stream, ref rotation.localRotation.z);
+
+            ReceiveElement(stream, ref scale.localScale.x);
+            ReceiveElement(stream, ref scale.localScale.y);
+            ReceiveElement(stream, ref scale.localScale.z);
 
         }
     }

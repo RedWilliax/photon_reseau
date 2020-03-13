@@ -8,7 +8,6 @@ using System;
 [Serializable]
 public class NM_RotationMovment
 {
-
     [SerializeField] float speedOfRotation = 100;
 
     GameObject owner = null;
