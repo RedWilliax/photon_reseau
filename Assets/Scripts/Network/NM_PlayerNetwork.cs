@@ -34,19 +34,20 @@ public class NM_PlayerNetwork : MonoBehaviour, IPunObservable
     {
         if(stream.IsWriting)
         {
-            stream.SendNext(localMovement.x);
-            stream.SendNext(localMovement.y);
-            stream.SendNext(localMovement.z);
+            SendElement(stream, localMovement.x);
+            SendElement(stream, localMovement.y);
+            SendElement(stream, localMovement.z);
         }
         else
         {
-            localMovement.x = (float)stream.ReceiveNext();
-            localMovement.y = (float)stream.ReceiveNext();
-            localMovement.z = (float)stream.ReceiveNext();
+            ReceiveElement(stream, ref localMovement.x);
+            ReceiveElement(stream, ref localMovement.y);
+            ReceiveElement(stream, ref localMovement.z);
         }
     }
 
     void SendElement<T>(PhotonStream stream, T _element) => stream.SendNext(_element);
-
     void ReceiveElement<T>(PhotonStream stream, ref T _element) => _element = (T)stream.ReceiveNext();
+
+
 }
