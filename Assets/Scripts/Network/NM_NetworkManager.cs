@@ -27,7 +27,7 @@ public class NM_NetworkManager : MonoBehaviourPunCallbacks
     //
     void Connect()
     {
-        PhotonNetwork.PhotonServerSettings.AppSettings.AppVersion = "2.3";
+        PhotonNetwork.PhotonServerSettings.AppSettings.AppVersion = nameServ;
         PhotonNetwork.ConnectUsingSettings();
     }
     //

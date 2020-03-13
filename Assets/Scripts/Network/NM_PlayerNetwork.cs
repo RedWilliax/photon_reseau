@@ -9,44 +9,39 @@ public class NM_PlayerNetwork : MonoBehaviour, IPunObservable
     [SerializeField] PhotonView myID = null;
     Vector3 localMovement = Vector3.zero;
 
+    [SerializeField] NM_MovementNetwork movement;
+
+    bool IsValid => movement != null;
+
     void Start()
     {
+        movement = new NM_MovementNetwork(gameObject);
         name = myID.ViewID.ToString();
     }
 
     void Update()
     {
+        if (!IsValid) return;
+
         if(myID.IsMine)
-            OnLocalMovement();
+            movement.OnLocalMovement();
         else 
-            OnOnlineMovement();
+            movement.OnOnlineMovement();
     }
 
-    void OnLocalMovement()
-    {
-        localMovement = transform.position;
-    }
-    void OnOnlineMovement()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, localMovement, Time.deltaTime * 20);
-    }
+   
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if(stream.IsWriting)
         {
-            stream.SendNext(localMovement.x);
-            stream.SendNext(localMovement.y);
-            stream.SendNext(localMovement.z);
+            movement.Send(stream);
         }
         else
         {
-            localMovement.x = (float)stream.ReceiveNext();
-            localMovement.y = (float)stream.ReceiveNext();
-            localMovement.z = (float)stream.ReceiveNext();
+
+            movement.Receive(stream);
         }
     }
 
-    void SendElement<T>(PhotonStream stream, T _element) => stream.SendNext(_element);
-
-    void ReceiveElement<T>(PhotonStream stream, ref T _element) => _element = (T)stream.ReceiveNext();
+    
 }
