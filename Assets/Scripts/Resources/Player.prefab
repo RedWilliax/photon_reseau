@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e56eb234ef7f63e4d8561cf9be2f7543, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -131,11 +131,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myID: {fileID: 5835127963346385148}
   rotation:
-    speedOfRotation: 500
-    localRotation: {x: 0, y: 0, z: 0}
+    speedOfRotation: 100
+    localRotation: {x: 0, y: 0, z: 0, w: 0}
   movement:
     speedOfMovement: 20
     localMovement: {x: 0, y: 0, z: 0}
   scale:
-    speedOfScale: 0
+    speedOfScale: 20
     localScale: {x: 0, y: 0, z: 0}
+  color:
+    color: {r: 0, g: 0, b: 0, a: 0}
