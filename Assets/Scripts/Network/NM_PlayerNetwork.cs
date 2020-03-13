@@ -27,7 +27,7 @@ public class NM_PlayerNetwork : MonoBehaviour, IPunObservable
         rotation = new NM_RotationMovment(gameObject);
         scale = new NM_ScaleNetwork(gameObject);
         color = new NM_ColorNetwork(gameObject);
-        nickName = myID.name;
+        name = myID.Owner.NickName;
 
     }
 

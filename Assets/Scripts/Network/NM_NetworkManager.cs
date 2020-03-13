@@ -24,10 +24,10 @@ public class NM_NetworkManager : MonoBehaviourPunCallbacks
     {
         base.OnJoinedRoom();
         Debug.Log("Joined room O3D");
+
         PhotonView _id = PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity).GetPhotonView();
 
-        if (_id.IsMine)
-            _id.name = nickName;
+        _id.Owner.NickName = nickName;
 
     }
     //
